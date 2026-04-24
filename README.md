@@ -1,24 +1,24 @@
-# README
+# Achievery(アチーブリー)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 概要
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+# サイトテーマ
 
-* Configuration
 
-* Database creation
+## テーマを選んだ理由
 
-* Database initialization
+### きっかけ
+### 問題点
+### 解決策
 
-* How to run the test suite
+# ターゲットユーザー
 
-* Services (job queues, cache servers, search engines, etc.)
+# 主な利用シーン
 
-* Deployment instructions
+# 利用方法
 
-* ...
+# 機能一覧
+
+# 開発環境
