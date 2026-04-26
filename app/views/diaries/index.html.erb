@@ -1,0 +1,9 @@
+<h1>スケジュール一覧</h1>
+
+<%= link_to "新規作成", new_diary_path %>
+
+<% @diaries.each do |diary| %>
+  <p>
+    <%= link_to diary.date, diary_path(diary) %>
+  </p>
+<% end %>

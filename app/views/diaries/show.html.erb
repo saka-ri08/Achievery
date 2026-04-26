@@ -1,0 +1,28 @@
+<h2><%= @diary.date %></h2>
+
+<p><%= @diary.content %></p>
+
+<h3>タスク</h3>
+
+<%= form_with model: [@diary, @task] do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit "追加" %>
+<% end %>
+
+<ul>
+<% @diary.tasks.each do |task| %>
+  <li>
+    <% if task.completed %>
+      <span style="text-decoration: line-through;">
+        <%= task.content %>
+      </span>
+    <% else %>
+      <%= task.content %>
+    <% end %>
+
+    <%= button_to "完了", diary_task_path(@diary, task), method: :patch %>
+    <%= button_to "削除", diary_task_path(@diary, task), method: :delete %>
+  </li>
+<% end %>
+
+</ul>
