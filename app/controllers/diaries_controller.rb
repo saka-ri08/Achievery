@@ -1,9 +1,8 @@
 class DiariesController < ApplicationController
     def index
-        @diaries = current_user.diaries.order(date: :desc)
+     @diaries = current_user.diaries
     end
-    # 現在ログインしているユーザーの日記を、日付の新しい順に並べ替えて取得
-
+    
     def show
         @diary = current_user.diaries.find(params[:id])
         @task = Task.new

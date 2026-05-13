@@ -1,9 +1,15 @@
-<h1>スケジュール一覧</h1>
+<h1>カレンダー</h1>
+
+<%= month_calendar events: @diaries do |date, diaries| %>
+  <div>
+    <%= date.day %>
+  </div>
+
+  <% diaries.each do |diary| %>
+    <div>
+      <%= link_to "日記", diary_path(diary) %>
+    </div>
+  <% end %>
+<% end %>
 
 <%= link_to "新規作成", new_diary_path %>
-
-<% @diaries.each do |diary| %>
-  <p>
-    <%= link_to diary.date, diary_path(diary) %>
-  </p>
-<% end %>

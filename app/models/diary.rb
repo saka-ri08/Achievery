@@ -3,6 +3,11 @@ class Diary < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   validates :date, presence: true
+  validates :date, uniqueness: { scope: :user_id }
+
+  def start_time
+   self.date
+  end
 end
 
 # 日記はユーザー依存

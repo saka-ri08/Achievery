@@ -8,3 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .today {
+  background-color: #ffeaa7;
+}
+
+.has-diary {
+  background: #dfe6e9;
+}
