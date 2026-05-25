@@ -1,5 +1,5 @@
 # Achievery(アチーブリー)
-<img src="app/assets/images/logo.png">
+<img src="app/assets/images/logo2.png">
 
 # 概要
 このアプリは、毎日のタスクをゲームのクエスト感覚で管理する、継続支援型スケジュール管理アプリケーションです。
