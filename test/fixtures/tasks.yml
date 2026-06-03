@@ -2,12 +2,12 @@
 
 one:
   user: one
-  diary: one
+  title: one
   content: MyString
   completed: false
 
 two:
   user: two
-  diary: two
+  title: two
   content: MyString
   completed: false

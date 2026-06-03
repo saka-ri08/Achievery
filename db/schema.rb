@@ -10,24 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_24_104705) do
-  create_table "diaries", force: :cascade do |t|
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.date "date"
-    t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_diaries_on_user_id"
-  end
-
+ActiveRecord::Schema[8.1].define(version: 2026_06_03_092612) do
   create_table "tasks", force: :cascade do |t|
-    t.boolean "completed"
-    t.string "content"
+    t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
-    t.integer "diary_id", null: false
+    t.date "deadline"
+    t.text "memo"
+    t.integer "priority", default: 0, null: false
+    t.date "scheduled_date"
+    t.string "title"
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.index ["diary_id"], name: "index_tasks_on_diary_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -44,7 +37,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_24_104705) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "diaries", "users"
-  add_foreign_key "tasks", "diaries"
   add_foreign_key "tasks", "users"
 end

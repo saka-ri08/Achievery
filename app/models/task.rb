@@ -1,8 +1,13 @@
 class Task < ApplicationRecord
   belongs_to :user
-  belongs_to :diary
-  validates :content, presence: true
+  # タスクはユーザーに属する
+  
+  validates :title, presence: true
+  validates :priority, inclusion: { in: 0..2 }
+  # 名前は空にしない
+
+  enum :priority, { low: 0, medium: 1, high: 2 }, prefix: true
+  # 優先度ステータス
 end
 
-# task →　ユーザーと日記（日付）に依存、その人のその日のタスク
-# 空欄×
+
