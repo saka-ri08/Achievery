@@ -1,0 +1,25 @@
+<%= form_with model: @task do |f| %>
+
+  <div>
+    <%= f.label :title, "タスク名" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :scheduled_date, "予定日" %>
+    <%= f.date_field :scheduled_date %>
+  </div>
+
+  <div>
+    <%= f.label :deadline, "締切日" %>
+    <%= f.date_field :deadline %>
+  </div>
+
+  <div>
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_area :memo %>
+  </div>
+
+  <%= f.submit "登録" %>
+
+<% end %>

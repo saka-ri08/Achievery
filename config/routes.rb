@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "calendar_days/show"
+  get "calendars/show"
   devise_for :users
 
   root "homes#top"

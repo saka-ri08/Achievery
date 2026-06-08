@@ -1,7 +1,7 @@
 <!-- app/views/homes/index.html.erb -->
 <h1>スケジュールアプリ</h1>
 
-<%= link_to "スケジュールを見る", home_path %>
+<%= link_to "カレンダーを見る", calendar_path %>
 
 <% if user_signed_in? %>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

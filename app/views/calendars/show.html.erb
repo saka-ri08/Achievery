@@ -1,0 +1,13 @@
+<h1>カレンダー</h1>
+
+<%= month_calendar(events: @tasks, attribute: :scheduled_date) do |date, tasks| %>
+
+  <%= link_to date.day, calendar_day_path(date) %>
+
+  <% tasks.each do |task| %>
+    <div>
+      <%= task.title %>
+    </div>
+  <% end %>
+
+<% end %>
