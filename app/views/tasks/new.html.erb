@@ -14,7 +14,12 @@
     <%= f.label :deadline, "締切日" %>
     <%= f.date_field :deadline %>
   </div>
-
+  <div>
+      <%= f.select :priority,
+     [["低", "low"],
+     ["中", "medium"],
+     ["高", "high"]] %>
+  </div>
   <div>
     <%= f.label :memo, "メモ" %>
     <%= f.text_area :memo %>

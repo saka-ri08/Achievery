@@ -1,12 +1,21 @@
 class TasksController < ApplicationController
+
+    def index
+     @tasks = current_user.tasks
+    end
+
+    def new
+     @task = Task.new
+    end
+
     def create
-        @task = current_user.tasks.new(task_params)
-      
-        if @task.save
-          redirect_to tasks_path  # またはホーム・カレンダーなど、行き先は後で決めてOK
-        else
-          render :new, status: :unprocessable_entity
-        end
+     @task = current_user.tasks.new(task_params)
+
+     if @task.save
+      redirect_to tasks_path
+     else
+      render plain: @task.errors.inspect
+     end
     end
 
     def update

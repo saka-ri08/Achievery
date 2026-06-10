@@ -2,6 +2,7 @@
 <h1>スケジュールアプリ</h1>
 
 <%= link_to "カレンダーを見る", calendar_path %>
+<%= link_to "タスクを追加する", new_task_path %>
 
 <% if user_signed_in? %>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
