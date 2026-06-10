@@ -13,3 +13,11 @@
   background-color: #ffeaa7;
 }
 
+.calendar-date-link {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.calendar-date-link:hover {
+  text-decoration: underline;
+}

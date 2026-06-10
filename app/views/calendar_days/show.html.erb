@@ -1,13 +1,60 @@
-<h1>カレンダー</h1>
+<h1><%= @date.strftime("%Y年%m月%d日") %></h1>
 
-<%= month_calendar(events: @tasks, attribute: :scheduled_date) do |date, tasks| %>
+<p>
+  <%= link_to "← カレンダーへ戻る", calendar_path %>
+</p>
 
-  <%= date.day %>
+<hr>
 
-  <% tasks.each do |task| %>
-    <div>
-      <%= task.title %>
-    </div>
-  <% end %>
+<h2>この日のタスク</h2>
+
+<% if @tasks.any? %>
+
+  <ul>
+    <% @tasks.each do |task| %>
+
+      <li>
+
+        <% if task.completed? %>
+          <span style="text-decoration: line-through;">
+            <%= task.title %>
+          </span>
+
+        <% else %>
+          <%= task.title %>
+
+          <%= button_to "完了",
+              task_path(task),
+              method: :patch %>
+
+          <%= button_to "削除",
+              task_path(task),
+              method: :delete %>
+
+
+        <% end %>
+
+      </li>
+
+    <% end %>
+  </ul>
+
+
+  <h2>タスク追加</h2>
+
+<%= form_with model: @task do |f| %>
+
+  <%= f.text_field :title %>
+
+  <%= f.hidden_field :scheduled_date,
+      value: @date %>
+
+  <%= f.submit "追加" %>
+
+<% end %>
+
+<% else %>
+
+  <p>この日のタスクはありません。</p>
 
 <% end %>

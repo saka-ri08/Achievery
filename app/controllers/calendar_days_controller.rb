@@ -7,5 +7,7 @@ class CalendarDaysController < ApplicationController
     @tasks = current_user.tasks.where(
       scheduled_date: @date
     )
+
+    @task = Task.new
   end
 end
