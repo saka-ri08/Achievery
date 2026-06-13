@@ -1,0 +1,93 @@
+<h1>📌 フリータスク</h1>
+
+<hr>
+
+<h2>フリータスク追加</h2>
+
+<%= form_with model: @task do |f| %>
+
+  <div>
+    <%= f.label :title, "タスク名" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :deadline, "締切" %>
+    <%= f.date_field :deadline %>
+  </div>
+
+  <%= f.submit "追加" %>
+
+<% end %>
+
+<h2>未完了タスク</h2>
+
+<% if @incomplete_free_tasks.any? %>
+
+  <ul>
+
+    <% @incomplete_free_tasks.each do |task| %>
+
+      <li>
+        □ <%= task.title %>
+
+        <% if task.deadline.present? %>
+          （締切：<%= task.deadline.strftime("%Y/%m/%d") %>）
+        <% end %>
+
+        <%= button_to "完了",
+            task_path(task),
+            method: :patch %>
+
+        <%= button_to "削除",
+            task_path(task),
+            method: :delete %>
+      </li>
+
+    <% end %>
+
+  </ul>
+
+<% else %>
+
+  <p>未完了のフリータスクはありません。</p>
+
+<% end %>
+
+<hr>
+
+<h2>完了済みタスク</h2>
+
+<details>
+  <summary>
+    完了済みタスク（<%= @completed_free_tasks.count %>件）
+  </summary>
+
+  <% if @completed_free_tasks.any? %>
+
+    <ul>
+
+      <% @completed_free_tasks.each do |task| %>
+
+        <li>
+          ☑
+          <span style="text-decoration: line-through;">
+            <%= task.title %>
+          </span>
+
+          <%= button_to "削除",
+              task_path(task),
+              method: :delete %>
+        </li>
+
+      <% end %>
+
+    </ul>
+
+  <% else %>
+
+    <p>完了済みタスクはありません。</p>
+
+  <% end %>
+
+</details>

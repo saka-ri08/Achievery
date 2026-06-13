@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_092612) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_13_030014) do
+  create_table "achievements", force: :cascade do |t|
+    t.string "condition_type", null: false
+    t.integer "condition_value", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "icon"
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
@@ -22,6 +32,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_092612) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_achievements", force: :cascade do |t|
+    t.integer "achievement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "unlocked_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["achievement_id"], name: "index_user_achievements_on_achievement_id"
+    t.index ["user_id"], name: "index_user_achievements_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +58,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_092612) do
   end
 
   add_foreign_key "tasks", "users"
+  add_foreign_key "user_achievements", "achievements"
+  add_foreign_key "user_achievements", "users"
 end

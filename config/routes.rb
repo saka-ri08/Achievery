@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "free_tasks/index"
   get "calendar_days/show"
   get "calendars/show"
   devise_for :users
