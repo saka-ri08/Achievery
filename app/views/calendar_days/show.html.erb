@@ -1,26 +1,21 @@
-<h1><%= @date.strftime("%Y年%m月%d日") %></h1>
-
-<p>
-  <%= link_to "← カレンダーへ戻る", calendar_path %>
-</p>
-
-<hr>
-
-<h2>この日のタスク</h2>
+<h1><%= @date.strftime("%Y/%m/%d") %></h1>
 
 <% if @tasks.any? %>
 
   <ul>
+
     <% @tasks.each do |task| %>
 
       <li>
 
         <% if task.completed? %>
+
           <span style="text-decoration: line-through;">
             <%= task.title %>
           </span>
 
         <% else %>
+
           <%= task.title %>
 
           <%= button_to "完了",
@@ -31,16 +26,22 @@
               task_path(task),
               method: :delete %>
 
-
         <% end %>
 
       </li>
 
     <% end %>
+
   </ul>
 
+<% else %>
 
-  <h2>タスク追加</h2>
+  <p>この日のタスクはありません。</p>
+
+<% end %>
+
+
+<h3>タスクを追加</h3>
 
 <%= form_with model: @task do |f| %>
 
@@ -50,11 +51,5 @@
       value: @date %>
 
   <%= f.submit "追加" %>
-
-<% end %>
-
-<% else %>
-
-  <p>この日のタスクはありません。</p>
 
 <% end %>

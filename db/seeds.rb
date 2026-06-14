@@ -16,6 +16,13 @@ Achievement.create!(
 )
 
 Achievement.create!(
+  name: "計画家",
+  description: "タスクを10件作成した",
+  condition_type: "tasks_created",
+  condition_value: 10
+)
+
+Achievement.create!(
   name: "見習い冒険者",
   description: "タスクを10件完了した",
   condition_type: "tasks_completed",

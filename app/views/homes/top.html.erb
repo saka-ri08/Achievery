@@ -1,12 +1,12 @@
-<!-- app/views/homes/index.html.erb -->
-<h1>スケジュールアプリ</h1>
+<h1>Achievery</h1>
 
-<%= link_to "カレンダーを見る", calendar_path %>
-<%= link_to "タスクを追加する", new_task_path %>
+<p>
+  タスク管理と実績解除で、
+  毎日の達成をゲームのように楽しむアプリ
+</p>
 
-<% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "ログイン", new_user_session_path %>
-<% end %>
-<%= link_to "新規登録", new_user_registration_path %>
+<%= link_to "ログイン",
+            new_user_session_path %>
+
+<%= link_to "新規登録",
+            new_user_registration_path %>

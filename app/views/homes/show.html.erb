@@ -1,46 +1,100 @@
-<h2>締切が近いタスク</h2>
+<div class="home-container">
 
-<% if @urgent_tasks.any? %>
+  <!-- あいさつ -->
+  <section class="greeting-card">
+    <h2>おはようございます、<%= current_user.name %>さん</h2>
+    <p><%= Date.current.strftime("%Y/%m/%d") %></p>
+  </section>
 
-  <ul>
+  <!-- 2カラム -->
+  <div class="top-cards">
 
-    <% @urgent_tasks.first(5).each do |task| %>
+    <!-- 今日の予定 -->
+    <section class="card">
+      <h3>今日の予定</h3>
 
-     <% days_left = (task.deadline - Date.current).to_i %>
-
-     <li>
-
-      <%= task.title %>
-
-      <% if days_left < 0 %>
-
-       ❌ 期限超過
-
-      <% elsif days_left == 0 %>
-
-       🔥 今日締切
-
-      <% elsif days_left == 1 %>
-
-       ⚠ 明日締切
-
+      <% if @today_tasks.any? %>
+        <ul>
+          <% @today_tasks.each do |task| %>
+            <li><%= task.title %></li>
+          <% end %>
+        </ul>
       <% else %>
+        <p>予定はありません。</p>
+      <% end %>
+    </section>
 
-       📅 あと<%= days_left %>日
+    <!-- 締切が近いタスク -->
+    <section class="card">
+      <h3>締切が近いタスク</h3>
 
-  <% end %>
+      <% if @urgent_tasks.any? %>
+        <ul>
+          <% @urgent_tasks.first(5).each do |task| %>
 
-     </li>
+            <% days_left = (task.deadline - Date.current).to_i %>
 
+            <li>
+              <%= task.title %>
+
+              <% if days_left < 0 %>
+                ❌期限超過
+              <% elsif days_left == 0 %>
+                🔥今日締切
+              <% elsif days_left == 1 %>
+                ⚠明日締切
+              <% else %>
+                📅あと<%= days_left %>日
+              <% end %>
+            </li>
+
+          <% end %>
+        </ul>
+      <% else %>
+        <p>期限が近いタスクはありません。</p>
+      <% end %>
+    </section>
+
+  </div>
+
+  <!-- フリータスク -->
+  <section class="card free-task-card">
+    <h3>
+      📌 フリータスク
+      （<%= @free_tasks_count %>件）
+    </h3>
+
+    <% if @free_tasks.any? %>
+      <ul>
+        <% @free_tasks.first(5).each do |task| %>
+          <li><%= task.title %></li>
+        <% end %>
+      </ul>
+
+      <%= link_to "もっと見る", free_tasks_path %>
+
+    <% else %>
+      <p>フリータスクはありません。</p>
+    <% end %>
+  </section>
+
+  <!-- 実績 -->
+  <section class="card">
+    <h3>🏆 実績解除状況</h3>
+
+    <% if current_user.user_achievements.any? %>
+      <ul>
+        <% current_user.user_achievements.last(3).each do |ua| %>
+          <li>
+            <%= ua.achievement.name %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>まだ実績がありません。</p>
     <% end %>
 
-  </ul>
+    <%= link_to "実績一覧へ", achievements_path %>
+  </section>
 
-<% else %>
-
-  <p>締切設定されたタスクはありません。</p>
-
-<% end %>
-
-📌 フリータスク
-（<%= @free_tasks_count %>件）
+</div>

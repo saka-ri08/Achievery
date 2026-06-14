@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= favicon_link_tag('favicon.ico') %>
+    <%= favicon_link_tag "favicon.ico" %>
     <title><%= content_for(:title) || "Achievery" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,9 +15,7 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -25,6 +23,30 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+    <header class="global-header">
+
+      <div class="logo">
+       <%= link_to home_path do %>
+         <%= image_tag "logo2.png" %>
+       <% end %>
+    </div>
+
+    <nav>
+      <%= link_to "Home", home_path %>
+      <%= link_to "Calendar", calendar_path %>
+      <%= link_to "FreeTask", free_tasks_path %>
+      <%= link_to "Achievements", achievements_path %>
+
+      <%= button_to "Logout",
+          destroy_user_session_path,
+          method: :delete,
+          class: "logout-btn" %>
+    </nav>
+
+   </header>
+  <% end %>
+
+  <%= yield %>
   </body>
 </html>

@@ -12,18 +12,27 @@ class TasksController < ApplicationController
      @task = current_user.tasks.new(task_params)
 
      if @task.save
-      redirect_to tasks_path
+       AchievementService.check(current_user)
+       # タスク作成時にアチーブメントを呼び出す
+       redirect_to tasks_path
      else
       render plain: @task.errors.inspect
      end
     end
 
-    def update
-        @task = current_user.tasks.find(params[:id])
-        @task.update(completed: !@task.completed)
-        # タスクの完了ステータスの反転（！で否定）
-        redirect_to tasks_path
+   def update
+    @task = current_user.tasks.find(params[:id])
+
+    if @task.update(
+      completed: !@task.completed
+    )
+      AchievementService.check(current_user)
+      redirect_to tasks_path
+    else
+      redirect_to tasks_path,
+                  alert: "更新に失敗しました"
     end
+   end
 
     def destroy
         @task = current_user.tasks.find(params[:id])

@@ -1,0 +1,39 @@
+<h1>🏆 実績一覧</h1>
+
+<div class="achievement-list">
+
+  <% @achievements.each do |achievement| %>
+
+    <% unlocked =
+      @unlocked_ids.include?(achievement.id)
+    %>
+
+    <div class="
+      achievement-card
+      <%= "unlocked" if unlocked %>
+      <%= "locked" unless unlocked %>
+    ">
+
+      <% if unlocked %>
+
+        <h3>🏆 <%= achievement.name %></h3>
+
+        <p>
+          <%= achievement.description %>
+        </p>
+
+      <% else %>
+
+        <h3>🔒 ??????</h3>
+
+        <p>
+          条件を達成すると解除されます
+        </p>
+
+      <% end %>
+
+    </div>
+
+  <% end %>
+
+</div>
