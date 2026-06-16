@@ -1,0 +1,10 @@
+
+.unlocked {
+  border:
+    3px solid gold;
+}
+
+.locked {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}

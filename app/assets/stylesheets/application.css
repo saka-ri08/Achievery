@@ -1,105 +1,12 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+@import "base/reset.css";
+@import "base/variables.css";
+@import "base/typography.css";
+@import "pages/card.css";
 
- .today {
-  background-color: #ffeaa7;
-}
+@import "layouts/header.css";
 
-.calendar-date-link {
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.calendar-date-link:hover {
-  text-decoration: underline;
-}
-
-.achievement-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.achievement-card {
-  width: 250px;
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.unlocked {
-  background: #fff8d8;
-  border: 3px solid gold;
-}
-
-.locked {
-  background: #eeeeee;
-  opacity: 0.6;
-}
-
-.global-header {
-  position: sticky;
-  top: 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 20px 50px;
-
-  background: white;
-  border-bottom: 1px solid #ddd;
-
-  z-index: 1000;
-}
-
-.global-header nav {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.global-header a {
-  text-decoration: none;
-  color: #333;
-}
-
-.logo img {
-  height: 50px;
-}
-
-.home-container {
-  max-width: 1200px;
-  margin: 40px auto;
-}
-
-.greeting-card {
-  text-align: center;
-  border: 1px solid #ddd;
-  padding: 30px;
-  margin-bottom: 30px;
-}
-
-.top-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 30px;
-}
-
-.card {
-  border: 1px solid #ddd;
-  padding: 40px;
-  min-height: 250px;
-}
-
-.free-task-card {
-  margin-bottom: 30px;
-}
+@import "pages/home.css";
+@import "pages/calendar.css";
+@import "pages/tasks.css";
+@import "pages/free_tasks.css";
+@import "pages/achievements.css";

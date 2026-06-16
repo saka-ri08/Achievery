@@ -1,0 +1,35 @@
+.calendar-day {
+  background: white;
+
+  border-radius:
+    var(--radius-sm);
+
+  padding: 12px;
+
+  transition:
+    var(--transition);
+}
+
+.calendar-day:hover {
+  transform: scale(1.05);
+  box-shadow:
+    var(--shadow-sm);
+}
+
+.today {
+  background: #ffeaa7;
+  border: 2px solid #fdcb6e;
+}
+
+.has-schedule {
+  position: relative;
+}
+
+.has-schedule::after {
+  content: "●";
+  color: var(--color-main);
+
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}

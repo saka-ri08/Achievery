@@ -26,25 +26,25 @@
     <% if user_signed_in? %>
     <header class="global-header">
 
-      <div class="logo">
-       <%= link_to home_path do %>
-         <%= image_tag "logo2.png" %>
-       <% end %>
-    </div>
+     <div class="logo">
+      <%= link_to home_path do %>
+       <%= image_tag "logo2.png" %>
+     <% end %>
+     </div>
 
-    <nav>
-      <%= link_to "Home", home_path %>
-      <%= link_to "Calendar", calendar_path %>
-      <%= link_to "FreeTask", free_tasks_path %>
-      <%= link_to "Achievements", achievements_path %>
+     <nav class="main-nav">
+       <%= link_to "Home", home_path %>
+       <%= link_to "Calendar", calendar_path %>
+       <%= link_to "FreeTask", free_tasks_path %>
+       <%= link_to "Achievements", achievements_path %>
 
-      <%= button_to "Logout",
-          destroy_user_session_path,
-          method: :delete,
-          class: "logout-btn" %>
-    </nav>
+       <%= button_to "Logout",
+         destroy_user_session_path,
+         method: :delete,
+         class: "logout-btn" %>
+     </nav>
 
-   </header>
+</header>
   <% end %>
 
   <%= yield %>

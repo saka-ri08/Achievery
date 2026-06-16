@@ -1,0 +1,45 @@
+.home-page {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff8e7,
+      #f8fbff
+    );
+
+  padding: 30px 20px;
+}
+
+.home-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+
+.card-spacing {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .top-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deadline-card:hover {
+  border-color: red;
+}
+
+.achievement-card:hover {
+  transform: scale(1.02);
+}
