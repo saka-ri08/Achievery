@@ -1,18 +1,21 @@
-<div class="home-container">
+<div class="page-container home-page">
 
-  <!-- あいさつ -->
   <section class="card greeting-card">
-    <h2>おはようございます、<%= current_user.name %>さん</h2>
-    <p><%= Date.current.strftime("%Y/%m/%d") %></p>
+    <h2>
+      おはようございます、<%= current_user.name %>さん
+    </h2>
+
+    <p>
+      <%= Date.current.strftime("%Y/%m/%d") %>
+    </p>
   </section>
 
-  <!-- 2カラム -->
-  <div class="top-cards">
+  <div class="top-section">
 
-    <!-- 今日の予定 -->
-    <div class="top-section">
-     <section class="card today-schedule-card">
-      <h3 class="card-title">今日の予定</h3>
+    <section class="card today-schedule-card">
+      <h3 class="card-title">
+        今日の予定
+      </h3>
 
       <% if @today_tasks.any? %>
         <ul class="card-list">
@@ -25,15 +28,18 @@
       <% end %>
     </section>
 
-    <!-- 締切が近いタスク -->
-     <section class="card deadline-card">
-      <h3 class="card-title">締切が近いタスク</h3>
+    <section class="card deadline-card">
+      <h3 class="card-title">
+        締切が近いタスク
+      </h3>
 
       <% if @urgent_tasks.any? %>
         <ul class="card-list">
+
           <% @urgent_tasks.first(5).each do |task| %>
 
-            <% days_left = (task.deadline - Date.current).to_i %>
+            <% days_left =
+              (task.deadline - Date.current).to_i %>
 
             <li>
               <%= task.title %>
@@ -50,53 +56,79 @@
             </li>
 
           <% end %>
+
         </ul>
       <% else %>
-        <p>期限が近いタスクはありません。</p>
+        <p>
+          期限が近いタスクはありません。
+        </p>
       <% end %>
-      
+       <%= link_to "タスク一覧へ", tasks_path %>
     </section>
 
   </div>
 
-  <!-- フリータスク -->
   <section class="card free-task-card">
     <h3 class="card-title">
-      📌 フリータスク
-      （<%= @free_tasks_count %>件）
+      📌 フリータスク（<%= @free_tasks.count %>件）
     </h3>
 
     <% if @free_tasks.any? %>
+
       <ul class="card-list">
+
         <% @free_tasks.first(5).each do |task| %>
           <li><%= task.title %></li>
         <% end %>
+
       </ul>
 
-      <%= link_to "もっと見る", free_tasks_path %>
+      <%= link_to "もっと見る",
+          free_tasks_path %>
 
     <% else %>
-      <p>フリータスクはありません。</p>
+
+      <p>
+        フリータスクはありません。
+      </p>
+
     <% end %>
   </section>
 
-  <!-- 実績 -->
-  <section class="card">
-    <h3 class="card-title">🏆 実績解除状況</h3>
+  <section class="card achievement-card">
+
+    <h3 class="card-title">
+      🏆 実績解放状況
+    </h3>
 
     <% if current_user.user_achievements.any? %>
+
       <ul class="card-list">
-        <% current_user.user_achievements.last(3).each do |ua| %>
+
+        <% current_user
+            .user_achievements
+            .last(3)
+            .each do |ua| %>
+
           <li>
             <%= ua.achievement.name %>
           </li>
+
         <% end %>
+
       </ul>
+
     <% else %>
-      <p>まだ実績がありません。</p>
+
+      <p>
+        まだ実績がありません。
+      </p>
+
     <% end %>
 
-    <%= link_to "実績一覧へ", achievements_path %>
+    <%= link_to "実績一覧へ",
+        achievements_path %>
+
   </section>
 
 </div>

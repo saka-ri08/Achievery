@@ -1,13 +1,29 @@
-<h1>カレンダー</h1>
+<div class="page-container calendar-page">
 
-<%= month_calendar(events: @tasks, attribute: :scheduled_date) do |date, tasks| %>
+  <div class="page-title">
+    <h1>Calendar</h1>
+    <p class="page-subtitle">
+      今月の予定を確認しましょう
+    </p>
+  </div>
 
-  <%= link_to date.day, calendar_day_path(date) %>
+  <section class="card calendar-card">
+    <div id="calendar">
+    <%= month_calendar(events: @tasks, attribute: :scheduled_date) do |date, tasks| %>
+
+  <%= link_to date.day,
+    calendar_day_path(date),
+    class: "calendar-date-link" %>
 
   <% tasks.each do |task| %>
-    <div>
-      <%= task.title %>
-    </div>
-  <% end %>
+   <div class="calendar-task">
+     <%= task.title %>
+   </div>
+ <% end %>
 
 <% end %>
+    </div>
+  </section>
+
+</div>
+

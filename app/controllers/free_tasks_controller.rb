@@ -15,5 +15,8 @@ class FreeTasksController < ApplicationController
       # 完了タスクと未完了タスクをわける
 
     @task = Task.new
+
+    @free_tasks =
+    current_user.tasks.where(scheduled_date: nil)
   end
 end

@@ -1,0 +1,24 @@
+.free-tasks-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.free-task-list {
+  display: grid;
+  gap: 20px;
+}
+
+.free-task-item {
+  padding: 20px;
+
+  border-radius: var(--radius-sm);
+
+  background: #fafafa;
+
+  transition: var(--transition);
+}
+
+.free-task-item:hover {
+  background: #fff8e7;
+}
