@@ -38,3 +38,15 @@
   box-shadow:
     0 12px 24px rgba(0,0,0,0.10);
 }
+
+.auth-card {
+  width: 450px;
+
+  padding: 50px;
+
+  border-radius: 30px;
+
+  background: white;
+
+  box-shadow: var(--shadow-md);
+}

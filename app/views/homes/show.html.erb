@@ -19,9 +19,8 @@
 
       <% if @today_tasks.any? %>
         <ul class="card-list">
-          <% @today_tasks.each do |task| %>
-            <li><%= task.title %></li>
-          <% end %>
+          <%= render "tasks/task_list",
+           tasks: @today_tasks %>
         </ul>
       <% else %>
         <p>予定はありません。</p>
@@ -36,26 +35,8 @@
       <% if @urgent_tasks.any? %>
         <ul class="card-list">
 
-          <% @urgent_tasks.first(5).each do |task| %>
-
-            <% days_left =
-              (task.deadline - Date.current).to_i %>
-
-            <li>
-              <%= task.title %>
-
-              <% if days_left < 0 %>
-                ❌期限超過
-              <% elsif days_left == 0 %>
-                🔥今日締切
-              <% elsif days_left == 1 %>
-                ⚠明日締切
-              <% else %>
-                📅あと<%= days_left %>日
-              <% end %>
-            </li>
-
-          <% end %>
+          <%= render "tasks/task_list",
+      tasks: @urgent_tasks %>
 
         </ul>
       <% else %>
@@ -93,6 +74,12 @@
       </p>
 
     <% end %>
+  </section>
+
+  <section class="card">
+   <h2 class="card-title">➕タスク追加</h2>
+    <%= render "tasks/form",
+      task: @task %>
   </section>
 
   <section class="card achievement-card">

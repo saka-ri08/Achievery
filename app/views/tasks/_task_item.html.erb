@@ -1,0 +1,41 @@
+<div class="task-item">
+
+  <div class="task-info">
+
+    <div class="task-title">
+      <%= task.title %>
+    </div>
+
+    <% if task.deadline.present? %>
+
+      <div class="task-deadline">
+        📅
+        <%= task.deadline.strftime("%Y/%m/%d") %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="task-actions">
+
+    <% unless task.completed? %>
+
+      <%= button_to "✓",
+          complete_task_path(task),
+          method: :patch,
+          class: "btn complete-btn" %>
+
+    <% end %>
+
+    <%= button_to "🗑",
+        task_path(task),
+        method: :delete,
+        class: "btn delete-btn",
+        data: {
+          turbo_confirm: "削除しますか？"
+        } %>
+
+  </div>
+
+</div>

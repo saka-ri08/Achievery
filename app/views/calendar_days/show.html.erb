@@ -1,56 +1,40 @@
-<h1><%= @date.strftime("%Y/%m/%d") %></h1>
+<div class="page-container day-page">
 
-<% if @tasks.any? %>
+  <div class="page-title">
+    <h1>
+      <%= @date.strftime("%Y/%m/%d") %>
+    </h1>
 
-  <ul>
+    <p class="page-subtitle">
+      この日の予定
+    </p>
+  </div>
 
-    <% @tasks.each do |task| %>
+  <!-- この日のタスク一覧 -->
+  <section class="card">
 
-      <li>
+  <h2 class="card-title">
+    📅 この日のタスク
+  </h2>
 
-        <% if task.completed? %>
+  <%= render "tasks/task_list",
+      tasks: @tasks %>
 
-          <span style="text-decoration: line-through;">
-            <%= task.title %>
-          </span>
+</section>
 
-        <% else %>
+  <!-- タスク追加 -->
+<section class="card">
 
-          <%= task.title %>
+  <h2 class="card-title">
+    ➕ この日のタスクを追加
+  </h2>
 
-          <%= button_to "完了",
-              task_path(task),
-              method: :patch %>
+  <%= render "tasks/form",
+    task: @task,
+    scheduled_date: @date,
+    hide_scheduled_date: true %>
 
-          <%= button_to "削除",
-              task_path(task),
-              method: :delete %>
+</section>
+</div>
 
-        <% end %>
-
-      </li>
-
-    <% end %>
-
-  </ul>
-
-<% else %>
-
-  <p>この日のタスクはありません。</p>
-
-<% end %>
-
-
-<h3>タスクを追加</h3>
-
-<%= form_with model: @task do |f| %>
-
-  <%= f.text_field :title %>
-
-  <%= f.hidden_field :scheduled_date,
-      value: @date %>
-
-  <%= f.submit "追加" %>
-
-<% end %>
 

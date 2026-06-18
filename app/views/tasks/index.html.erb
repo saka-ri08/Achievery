@@ -12,28 +12,38 @@
 
   </div>
 
+  
   <section class="card">
 
-    <div class="task-list">
+  <h2 class="card-title">
+    🔥 締切が近いタスク
+  </h2>
 
-      <% @tasks.each do |task| %>
+  <%= render "task_list",
+      tasks: @urgent_tasks %>
 
-        <div class="task-item">
+</section>
 
-          <h3>
-            <%= task.title %>
-          </h3>
+</section>
 
-          <p>
-            <%= task.deadline %>
-          </p>
+<section class="card">
 
-        </div>
+  <h2 class="card-title">
+    📋 その他のタスク
+  </h2>
 
-      <% end %>
+  <%= render "task_list",
+      tasks: @other_tasks %>
 
-    </div>
+</section>
 
-  </section>
+<section class="card">
 
-</div>
+  <h2 class="card-title">
+    ➕ タスク追加
+  </h2>
+
+  <%= render "form",
+      task: @task %>
+
+</section>

@@ -1,7 +1,18 @@
 class TasksController < ApplicationController
 
     def index
-     @tasks = current_user.tasks
+     @urgent_tasks =
+       current_user.tasks
+                .where(completed: false)
+                .where.not(deadline: nil)
+                .order(:deadline)
+
+     @other_tasks =
+       current_user.tasks
+                .where(completed: false)
+                .where(deadline: nil)
+
+     @task = Task.new
     end
 
     def new
@@ -38,6 +49,17 @@ class TasksController < ApplicationController
         @task = current_user.tasks.find(params[:id])
         @task.destroy
         redirect_to tasks_path
+    end
+
+    def complete
+     @task = current_user.tasks.find(params[:id])
+
+     @task.update(completed: true)
+
+     redirect_back(
+      fallback_location: tasks_path,
+      notice: "タスクを完了しました"
+     )
     end
 
     private

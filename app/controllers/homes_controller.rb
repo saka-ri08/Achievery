@@ -17,11 +17,19 @@ class HomesController < ApplicationController
                 .where.not(deadline: nil)
                 .order(:deadline)
 
+   @other_tasks =
+    current_user.tasks
+              .where(completed: false)
+              .where(deadline: nil)
+
    @free_tasks =
     current_user.tasks
                 .where(scheduled_date: nil,
                        completed: false)
 
    @free_tasks_count = @free_tasks.count
+
+   @task = Task.new
+
   end
 end

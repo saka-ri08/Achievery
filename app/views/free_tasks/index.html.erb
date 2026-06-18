@@ -9,18 +9,18 @@
 
   <section class="card">
 
-    <div class="free-task-list">
+    <%= render "tasks/task_list",
+      tasks: @incomplete_free_tasks %>
 
-      <% @free_tasks.each do |task| %>
+    <%= render "tasks/task_list",
+      tasks: @completed_free_tasks %>
 
-        <div class="free-task-item">
-          <h3><%= task.title %></h3>
-        </div>
+  </section>
 
-      <% end %>
-
-    </div>
-
+  <section class="card">
+   <h2 class="card-title">➕タスク追加</h2>
+    <%= render "tasks/form",
+      task: @task %>
   </section>
 
 </div>

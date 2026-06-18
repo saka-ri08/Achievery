@@ -22,14 +22,60 @@
 }
 
 .task-item {
-  padding: 20px;
-
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-
-  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .task-item:hover {
   transform: translateX(5px);
+}
+
+.task-form {
+  display: flex;
+  gap: 20px;
+}
+
+.task-form input[type="text"] {
+  flex: 1;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.complete-btn {
+  background: #dff5e1;
+}
+
+.delete-btn {
+  background: #ffe5e5;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.task-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
 }

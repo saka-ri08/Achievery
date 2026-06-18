@@ -1,0 +1,46 @@
+.top-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+}
+
+.top-card {
+  width: 100%;
+  max-width: 700px;
+
+  background: white;
+
+  padding: 80px;
+
+  border-radius: 30px;
+
+  text-align: center;
+
+  box-shadow: var(--shadow-md);
+}
+
+.top-logo {
+  width: 120px;
+  margin-bottom: 30px;
+}
+
+.top-card h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.top-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   get "achievements", to: "achievements#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
+
+  resources :tasks do
+   member do
+     patch :complete
+   end
+  end
 end

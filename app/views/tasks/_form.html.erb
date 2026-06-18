@@ -1,0 +1,49 @@
+
+  <%= form_with model: @task do |f| %>
+
+    <div class="task-form-grid">
+
+      <div class="form-group">
+        <%= f.label :title, "タスク名" %>
+        <%= f.text_field :title %>
+      </div>
+
+      <% if local_assigns[:hide_scheduled_date] %>
+
+        <%= f.hidden_field :scheduled_date,
+         value: scheduled_date %>
+
+      <% else %>
+
+         <div class="form-group">
+          <%= f.label :scheduled_date, "予定日" %>
+          <%= f.date_field :scheduled_date %>
+         </div>
+
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :deadline, "締切日" %>
+        <%= f.date_field :deadline %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :priority, "優先度" %>
+
+        <%= f.select :priority,
+          [["低", "low"],
+           ["中", "medium"],
+           ["高", "high"]] %>
+      </div>
+
+      <div class="form-group form-group-full">
+        <%= f.label :memo, "メモ" %>
+        <%= f.text_area :memo %>
+      </div>
+
+    </div>
+
+    <%= f.submit "登録",
+        class: "primary-btn" %>
+
+  <% end %>
