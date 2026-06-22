@@ -1,8 +1,13 @@
 @import "base/reset.css";
 @import "base/variables.css";
 @import "base/typography.css";
+@import "base/layout.css";
+@import "base/buttons.css";
+@import "base/forms.css";
+
 @import "compornents/card.css";
 @import "compornents/page.css";
+@import "components/badge";
 
 @import "layouts/header.css";
 

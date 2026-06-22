@@ -40,3 +40,42 @@
   width: 100%;
   margin-top: 20px;
 }
+
+@media (max-width: 1200px) {
+
+  .top-section {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .task-form-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .global-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .global-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .achievement-list {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

@@ -79,3 +79,14 @@
   border: 1px solid #ddd;
   border-radius: 12px;
 }
+
+.task-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-badges {
+  display: flex;
+  gap: 8px;
+}

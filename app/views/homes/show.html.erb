@@ -49,32 +49,44 @@
 
   </div>
 
-  <section class="card free-task-card">
-    <h3 class="card-title">
-      📌 フリータスク（<%= @free_tasks.count %>件）
-    </h3>
+  <section class="card overdue-card">
+   <h3>
+     🔥 期限超過タスク
+     (<%= @overdue_tasks.count %>件)
+   </h3>
 
-    <% if @free_tasks.any? %>
+   <%= render "tasks/task_list",
+       tasks: @overdue_tasks %>
+ </section>
 
-      <ul class="card-list">
+  <section class="card">
 
-        <% @free_tasks.first(5).each do |task| %>
-          <li><%= task.title %></li>
-        <% end %>
+  <h3 class="card-title">
+    📋 フリータスク
+  </h3>
 
-      </ul>
+  <% if @free_tasks.any? %>
 
-      <%= link_to "もっと見る",
-          free_tasks_path %>
+    <ul class="card-list">
 
-    <% else %>
+      <%= render "tasks/task_list",
+          tasks: @free_tasks.first(5) %>
 
-      <p>
-        フリータスクはありません。
-      </p>
+    </ul>
 
-    <% end %>
-  </section>
+    <%= link_to "もっと見る",
+        free_tasks_path,
+        class: "btn btn-secondary" %>
+
+  <% else %>
+
+    <p>
+      フリータスクはありません。
+    </p>
+
+  <% end %>
+
+</section>
 
   <section class="card">
    <h2 class="card-title">➕タスク追加</h2>
@@ -82,40 +94,41 @@
       task: @task %>
   </section>
 
-  <section class="card achievement-card">
+  <section class="card">
 
-    <h3 class="card-title">
-      🏆 実績解放状況
-    </h3>
+  <h3 class="card-title">
+    🏆 実績解放状況
+  </h3>
 
-    <% if current_user.user_achievements.any? %>
+  <% if current_user.user_achievements.any? %>
 
-      <ul class="card-list">
+    <ul class="card-list">
 
-        <% current_user
-            .user_achievements
-            .last(3)
-            .each do |ua| %>
+      <% current_user
+          .user_achievements
+          .last(3)
+          .each do |ua| %>
 
-          <li>
-            <%= ua.achievement.name %>
-          </li>
+        <li>
+          <%= ua.achievement.name %>
+        </li>
 
-        <% end %>
+      <% end %>
 
-      </ul>
+    </ul>
 
-    <% else %>
+  <% else %>
 
-      <p>
-        まだ実績がありません。
-      </p>
+    <p>
+      まだ実績がありません。
+    </p>
 
-    <% end %>
+  <% end %>
 
-    <%= link_to "実績一覧へ",
-        achievements_path %>
+  <%= link_to "実績一覧へ",
+      achievements_path,
+      class: "btn btn-secondary" %>
 
-  </section>
+</section>
 
 </div>

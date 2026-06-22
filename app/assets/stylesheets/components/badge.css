@@ -1,0 +1,64 @@
+.badge {
+  display: inline-block;
+
+  padding: 4px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  color: white;
+}
+
+.priority-high {
+  background: #ef5350;
+  box-shadow: 0 3px 10px rgba(239,83,80,.3);
+}
+
+.priority-medium {
+  background: #ff9800;
+  box-shadow: 0 3px 10px rgba(255,152,0,.3);
+}
+
+.priority-low {
+  background: #66bb6a;
+  box-shadow: 0 3px 10px rgba(102,187,106,.3);
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deadline-normal {
+  background: #4caf50;
+  color: white;
+}
+
+.deadline-soon {
+  background: #ffb300;
+  color: white;
+}
+
+.deadline-today {
+  background: #ef5350;
+  color: white;
+}
+
+.deadline-overdue {
+  background: #424242;
+  color: white;
+}
+
+.deadline-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+
+

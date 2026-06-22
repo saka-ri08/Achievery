@@ -13,9 +13,10 @@ class HomesController < ApplicationController
 
    @urgent_tasks =
     current_user.tasks
-                .where(completed: false)
-                .where.not(deadline: nil)
-                .order(:deadline)
+              .where(completed: false)
+              .where(deadline: Date.current..1.week.from_now)
+              .by_priority
+              .order(:deadline)
 
    @other_tasks =
     current_user.tasks
@@ -30,6 +31,12 @@ class HomesController < ApplicationController
    @free_tasks_count = @free_tasks.count
 
    @task = Task.new
+
+   @overdue_tasks =
+    current_user.tasks
+              .where(completed: false)
+              .where("deadline < ?", Date.current)
+              .order(:deadline)
 
   end
 end
