@@ -1,0 +1,6 @@
+<%= turbo_stream.remove dom_id(@task) %>
+
+<%= turbo_stream.invoke(
+  "animateComplete",
+  dom_id(@task)
+) %>

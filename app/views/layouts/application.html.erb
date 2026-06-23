@@ -23,31 +23,63 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
+
+  <% if flash[:achievement] %>
+
+    <div class="achievement-toast">
+
+      <div class="toast-icon">
+        🏆
+      </div>
+
+      <div>
+
+        <div class="toast-title">
+          Achievement Unlocked!
+        </div>
+
+        <div class="toast-name">
+          <%= flash[:achievement] %>
+        </div>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <% if user_signed_in? %>
+
     <header class="global-header">
 
-     <div class="logo">
-      <%= link_to home_path do %>
-       <%= image_tag "logo2.png" %>
-     <% end %>
-     </div>
+      <div class="logo">
 
-     <nav class="main-nav">
-       <%= link_to "Home", home_path %>
-       <%= link_to "Calendar", calendar_path %>
-       <%= link_to "Task", tasks_path %>
-       <%= link_to "FreeTask", free_tasks_path %>
-       <%= link_to "Achievements", achievements_path %>
+        <%= link_to home_path do %>
+          <%= image_tag "logo2.png" %>
+        <% end %>
 
-       <%= button_to "Logout",
-         destroy_user_session_path,
-         method: :delete,
-         class: "logout-btn" %>
-     </nav>
+      </div>
 
-</header>
+      <nav class="main-nav">
+
+        <%= link_to "Home", home_path %>
+        <%= link_to "Calendar", calendar_path %>
+        <%= link_to "Task", tasks_path %>
+        <%= link_to "FreeTask", free_tasks_path %>
+        <%= link_to "Achievements", achievements_path %>
+
+        <%= button_to "Logout",
+            destroy_user_session_path,
+            method: :delete,
+            class: "logout-btn" %>
+
+      </nav>
+
+    </header>
+
   <% end %>
 
   <%= yield %>
-  </body>
+
+</body>
 </html>

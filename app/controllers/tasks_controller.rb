@@ -52,15 +52,25 @@ class TasksController < ApplicationController
     end
 
     def complete
-     @task = current_user.tasks.find(params[:id])
+  @task =
+    current_user.tasks.find(params[:id])
 
-     @task.update(completed: true)
+  @task.update(completed: true)
 
-     redirect_back(
-      fallback_location: tasks_path,
-      notice: "タスクを完了しました"
-     )
-    end
+  unlocked =
+    AchievementService.check(current_user)
+
+  if unlocked.any?
+
+    flash[:achievement] =
+      unlocked.first.name
+
+  end
+
+  redirect_back(
+    fallback_location: tasks_path
+  )
+end
 
     private
 

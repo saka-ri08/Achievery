@@ -44,7 +44,7 @@
 
 .main-nav a:hover {
   background: #fff5e8;
-  color: var(--color-main);
+  color: var(--color-primary);
 }
 
 .main-nav form {
@@ -57,7 +57,7 @@
   border: none;
   border-radius: 20px;
 
-  background: var(--color-main);
+  background: var(--color-primary);
   color: white;
 
   cursor: pointer;
@@ -70,7 +70,7 @@
 }
 
 @media (max-width: 768px) {
-  .app-header {
+  .global-header {
     flex-direction: column;
     gap: 20px;
   }

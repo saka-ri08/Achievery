@@ -1,3 +1,4 @@
+
 @import "base/reset.css";
 @import "base/variables.css";
 @import "base/typography.css";
@@ -5,9 +6,10 @@
 @import "base/buttons.css";
 @import "base/forms.css";
 
-@import "compornents/card.css";
-@import "compornents/page.css";
-@import "components/badge";
+@import "components/card.css";
+@import "components/page.css";
+@import "components/badge.css";
+@import "components/achievement_toast.css";
 
 @import "layouts/header.css";
 

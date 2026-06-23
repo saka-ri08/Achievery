@@ -90,3 +90,18 @@
   display: flex;
   gap: 8px;
 }
+
+.task-item {
+  transition:
+    opacity 0.4s,
+    transform 0.4s;
+}
+
+.task-item.completed-animation {
+  opacity: 0;
+
+  transform:
+    translateX(50px);
+
+  pointer-events: none;
+}
