@@ -7,20 +7,38 @@
     </p>
   </div>
 
+      <div class="priority-guide mt-2">
+       <p class="mb-1"><strong>📜 冒険者の手引き</strong></p>
+       <ul class="mb-0">
+        <li>👑 <strong>Boss</strong>：最優先で挑みたいクエスト</li>
+        <li>⚔️ <strong>Normal</strong>：通常のクエスト</li>
+        <li>🌱 <strong>Easy</strong>：余裕があるときに進めるクエスト</li>
+       </ul>
+      </div>
+
   <section class="card">
+   <h3 class="mt-4">📋 フリークエスト一覧</h3>
 
     <%= render "tasks/task_list",
-      tasks: @incomplete_free_tasks %>
+     tasks: @incomplete_free_tasks %>
 
-    <%= render "tasks/task_list",
-      tasks: @completed_free_tasks %>
+    <details class="completed-tasks mt-4">
+      <summary>
+        📜 完了済みクエスト（<%= @completed_free_tasks.count %>件）
+      </summary>
 
+      <%= render "tasks/task_list",
+          tasks: @completed_free_tasks %>
+    </details>
   </section>
 
   <section class="card">
-   <h2 class="card-title">➕タスク追加</h2>
-    <%= render "tasks/form",
-      task: @task %>
+    <h2 class="card-title">
+    ➕ タスク追加
+    </h2>
+
+   <%= render "tasks/form", task: @task %>
   </section>
 
 </div>
+

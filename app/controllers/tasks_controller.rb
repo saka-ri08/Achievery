@@ -20,16 +20,25 @@ class TasksController < ApplicationController
     end
 
     def create
-     @task = current_user.tasks.new(task_params)
+  @task = current_user.tasks.new(task_params)
 
-     if @task.save
-       AchievementService.check(current_user)
-       # タスク作成時にアチーブメントを呼び出す
-       redirect_to tasks_path
-     else
-      render plain: @task.errors.inspect
-     end
+  if @task.save
+    unlocked = AchievementService.check(current_user)
+
+    if unlocked.any?
+      flash[:achievement] = unlocked.first.name
     end
+
+    redirect_back(
+      fallback_location: tasks_path
+    )
+  else
+    redirect_back(
+      fallback_location: tasks_path,
+      alert: "タスクの作成に失敗しました"
+    )
+  end
+end
 
    def update
     @task = current_user.tasks.find(params[:id])
@@ -38,17 +47,23 @@ class TasksController < ApplicationController
       completed: !@task.completed
     )
       AchievementService.check(current_user)
-      redirect_to tasks_path
+      redirect_back(
+      fallback_location: tasks_path
+       )
     else
-      redirect_to tasks_path,
-                  alert: "更新に失敗しました"
+      redirect_back(
+       fallback_location: tasks_path,
+       alert: "更新に失敗しました"
+               )
     end
    end
 
     def destroy
         @task = current_user.tasks.find(params[:id])
         @task.destroy
-        redirect_to tasks_path
+        redirect_back(
+          fallback_location: tasks_path
+             )
     end
 
     def complete
@@ -58,19 +73,25 @@ class TasksController < ApplicationController
   @task.update(completed: true)
 
   unlocked =
-    AchievementService.check(current_user)
+  AchievementService.check(current_user)
 
-  if unlocked.any?
+Rails.logger.debug(
+  "UNLOCKED=#{unlocked.inspect}"
+)
 
-    flash[:achievement] =
-      unlocked.first.name
+if unlocked.any?
 
-  end
+  flash[:achievement] =
+    unlocked.first.name
 
-  redirect_back(
-    fallback_location: tasks_path
-  )
 end
+
+redirect_back(
+  fallback_location: tasks_path
+)
+
+end
+
 
     private
 

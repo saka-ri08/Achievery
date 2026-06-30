@@ -4,10 +4,18 @@ class CalendarDaysController < ApplicationController
   def show
     @date = Date.parse(params[:date])
 
-    @tasks = current_user.tasks.where(
-      scheduled_date: @date
-    )
+    @incomplete_tasks =
+  current_user.tasks.where(
+    scheduled_date: params[:date],
+    completed: false
+  )
 
+    @completed_tasks =
+      current_user.tasks.where(
+        scheduled_date: params[:date],
+        completed: true
+      )
+      
     @task = Task.new
   end
 end

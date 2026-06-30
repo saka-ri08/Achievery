@@ -1,50 +1,31 @@
-<li class="task-item"
-    id="<%= dom_id(task) %>">
-<div class="task-item">
+<li class="task-item">
 
-  <div class="task-info">
+  <div class="task-title">
+    <%= task.title %>
 
-    <div class="task-title">
-      <%= task.title %>
-
-      <span class="badge <%= task.priority_class %>">
-       <%= task.priority_label %>
-      </span>
-    </div>
-
-   <% if task.deadline.present? %>
-
-    <span
-      class="deadline-badge <%= task.deadline_class %>">
-
-     <%= task.deadline_label %>
-
+    <span class="badge <%= task.priority_class %>">
+      <%= task.priority_label %>
     </span>
-
-   <% end %>
-
   </div>
 
-  <div class="task-actions">
+  <% if task.deadline.present? %>
+    <span class="deadline-badge <%= task.deadline_class %>">
+      <%= task.deadline_label %>
+    </span>
+  <% end %>
 
-    <% unless task.completed? %>
+  <% unless task.completed? %>
 
-      <%= button_to "✓",
-       complete_task_path(task),
-       method: :patch,
-       class: "btn btn-success" %>
+    <%= button_to "完了",
+      complete_task_path(task),
+      method: :patch,
+      class: "btn btn-success complete-btn" %>
 
-    <% end %>
+  <% end %>
 
-    <%= button_to "削除",
-      task_path(task),
-      method: :delete,
-      class: "btn btn-danger" %>
+  <%= button_to "削除",
+   task_path(task),
+   method: :delete,
+   class: "btn delete-btn" %>
 
-  </div>
-  
-
-  
-
-</div>
 </li>

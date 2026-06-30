@@ -14,11 +14,22 @@
   <section class="card">
 
   <h2 class="card-title">
-    📅 この日のタスク
+    📅 この日のクエスト
   </h2>
 
-  <%= render "tasks/task_list",
-      tasks: @tasks %>
+   <h3>📋 未完了クエスト</h3>
+
+    <%= render "tasks/task_list",
+        tasks: @incomplete_tasks %>
+
+    <details class="completed-tasks mt-4">
+      <summary>
+        📜 完了済みクエスト（<%= @completed_tasks.count %>件）
+      </summary>
+
+      <%= render "tasks/task_list",
+          tasks: @completed_tasks %>
+    </details>
 
 </section>
 
