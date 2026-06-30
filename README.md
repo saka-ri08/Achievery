@@ -37,23 +37,48 @@
 - 引っ越し等の複数の手続きや日ごとのやるべきことが多く重なるタイミングのタスク管理がしたいとき
 
 # 利用方法
+- ユーザー新規登録あるいはログインする
+<img src="app/assets/images/top.png">
+<img src="app/assets/images/signup.png">
 
-# 機能一覧(実装予定を含む)
-- ユーザー登録 / ログイン
+- タスクを追加する
+<img src="app/assets/images/task.png">
+
+- カレンダー画面で日付に紐づいたタスクを確認する
+<img src="app/assets/images/calender.png">
+<img src="app/assets/images/day.png">
+
+- タスクの完了に応じて実績が解放
+<img src="app/assets/images/achieve.png">
+
+# 機能一覧
+- ユーザー登録・ログイン
+- タスク管理
+- 作成
+- 完了
+- 削除
 - カレンダー表示
-- タスク作成
-- タスク削除
-- タスク分類(日付に紐づくもの・紐づかないもの)
-- 実績解除システム
-- タスク完了・完了アニメーション
-- 連続記録ボーナス
-- レスポンシブ対応
-- 非同期通信（Ajax / Turbo）
+- フリータスク管理
+- 優先度設定
+  - 👑 Boss
+  - ⚔️ Normal
+  - 🌱 Easy
+- 締切表示
+- 実績解除
+- 実績一覧
 
 
-# 開発環境(予定)
-・Windows11 + Git Bash
-・言語：HTML、CSS、JavaScript、Ruby
-・フレームワーク：Ruby on Rails
-・JSライブラリ：jQuery
-・データベース：PostgreSQL
+# 開発環境
+## 使用技術
+| カテゴリ | 技術 |
+|----------|------|
+| OS | Windows 11 |
+| エディタ | Visual Studio Code |
+| ターミナル | Git Bash |
+| 言語 | HTML / CSS / JavaScript / Ruby 3.2 |
+| フレームワーク | Ruby on Rails 8.1.3 |
+| データベース | SQLite3 |
+| フロントエンド | Bootstrap / Turbo / Stimulus |
+| 認証 | Devise |
+| カレンダー | Simple Calendar |
+| バージョン管理 | Git / GitHub |
