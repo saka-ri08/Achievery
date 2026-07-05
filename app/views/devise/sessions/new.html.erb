@@ -1,17 +1,15 @@
-<div class="auth-container">
-
-  <div class="auth-card">
-
-    <div class="auth-logo">
-      <%= image_tag "logo2.png" %>
-    </div>
-
-    <h1 class="auth-title">
-      Log in
-    </h1>
-
-    <%= render "devise/sessions/form" %>
-
-  </div>
-
+<div class="auth-logo">
+  <%= image_tag "logo2.png" %>
 </div>
+
+<h1 class="auth-title">
+  Log in
+</h1>
+
+<%= form_for(resource,
+             as: resource_name,
+             url: session_path(resource_name)) do |f| %>
+
+  <!-- フォーム内容 -->
+
+<% end %>
